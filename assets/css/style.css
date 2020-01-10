@@ -1,0 +1,9 @@
+
+.demoInputBox {
+    padding: 10px;
+    border: #3fb8a8 1px solid;
+    border-radius: 3px;
+    width: 300px;
+    margin-top: 5px;
+    height: 40px;
+}
