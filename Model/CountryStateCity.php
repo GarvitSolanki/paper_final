@@ -1,7 +1,7 @@
 <?php
 namespace Phppot;
 
-use Phppot\DataSource;
+use \Phppot\DataSource;
 
 class CountryStateCity
 {

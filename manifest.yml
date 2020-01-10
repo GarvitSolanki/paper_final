@@ -1,0 +1,6 @@
+applications:
+- path: .
+  memory: 512M
+  instances: 1
+  name: rastm   
+  disk_quota: 1900M

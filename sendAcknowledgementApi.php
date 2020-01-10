@@ -11,7 +11,7 @@ $message = urlencode("otp number." . $rndno);
 // echo($_GET["email"]);
 if (! empty($_GET["email"])) {
 
-$to = $_GET["email"];
+/* $to = $_GET["email"];
 $subject = "Access OTP ";
 $txt = "OTP: " . $rndno . "";
 $headers = "From: clubtermoo@gmail.com" . "\r\n" .
@@ -34,18 +34,29 @@ $headers = "From:<no-reply@i3lab.in>\r\n"; // Sender's Email
 						$mail->FromName = "RASTM2020";
 						$mail->AddAddress($to,'anonymous' );
 						
-						$mail->Subject = '[RASTM 2020]: Email Verification OTP';
+						$mail->Subject = '[RASTM 2020] : Submission Acknowledgement';
 						$mail->Body =  "
-						Hey!
-						
-						Your verification code: ".$rndno."
-						
-                        ";
+Hi,
+
+Thank you for submitting the manuscript, Paper Title to RASTM 2020. 
+
+If you have any questions, please contact me. Thank you for considering this journal as a venue for your work.
+
+Editor in Chief
+
+________________________________________________________________________
+Aaditya Maheshwari,
+Convenor - RASTM 2020,
+Project Lead - New Initiative - Research,
+Techno India NJR Udaipur
++91-8696932715";
                         if($mail->send()) {
+                            header("Location: ./success.html");
                             echo '{"status":"success","msg": "'.$rndno.'"}';
                         }
                         else
                         {
+                            header("Location: ./index.php");
 							echo '{"status":"error","msg": "'.$mail->ErrorInfo.'"}' ;
                             
                         }
