@@ -317,7 +317,7 @@ $countryResult = $countryStateCity->getAllCountry();
   function generate() {
 
     var count = parseInt(document.getElementById("authorscount").value);
-    if (count > 4) {
+    if (count > 5) {
       Swal.fire({
         position: 'top-end',
         icon: 'warning',
@@ -327,11 +327,19 @@ $countryResult = $countryStateCity->getAllCountry();
       })
       document.getElementById("authorscount").value = "";
 
-    } else if (count >= 0 && count <= 4) {
+    } else if (count >= 0 && count <= 5) {
       document.getElementById('parentofauthdiv').innerHTML = '';
       for (i = 0; i < count; i++) {
-        var input = '<div style="width: 100%; background-color:#f4eab4" class="row mt-4 " name="authors"><div class="col-lg-6"><label class ="form-control-label">Author ' + (i + 1) + '</label><div class="form-group"><label class="form-control-label" for="authName">Name of Author<span style="color: red;">*</span></label><input type="text" name="authName[]" placeholder="name" class="form-control form-control-alternative" required/></div></div><div class="col-lg-6 mt-4"><div class="mt-1 form-group"><label class="form-control-label" for="authInstitute">Institution / organization / Affiliation<span style="color: red;">*</span></label><input type="text" name="authInstitute[]" class="form-control form-control-alternative" placeholder="organisation name" required/></div></div><div class="col-lg-4"><div class="form-group"><label class="form-control-label" for="authDesi">Designation<span style="color: red;">*</span></label><input type="text" name="authDesi[]" class="form-control form-control-alternative" required /></div></div><div class="col-lg-4"><div class="form-group"><label class="form-control-label" for="authEmail">Email address<span style="color: red;">*</span></label><input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="authEmail[]" class="form-control form-control-alternative" placeholder="jesse@example.com" required /></div></div><div class="col-lg-4"><div class="form-group"><label class="form-control-label" for="authMobile">Mobile<span style="color: red;">*</span></label><input type="tel" maxlength="10" name="authMobile[]" placeholder="10 digit mobile number" class="form-control form-control-alternative"  required/></div></div></div>';
-        $("#parentofauthdiv").append(input);
+        if(i!=0)
+        {
+          var input = '<div style="width: 100%; background-color:#f4eab4" class="row mt-4 " name="authors"><div class="col-lg-6"><label class ="form-control-label">Author ' + (i + 1) + '</label><div class="form-group"><label class="form-control-label" for="authName">Name of Author<span style="color: red;">*</span></label><input type="text" name="authName[]" placeholder="name" class="form-control form-control-alternative" required/></div></div><div class="col-lg-6 mt-4"><div class="mt-1 form-group"><label class="form-control-label" for="authInstitute">Institution / organization / Affiliation<span style="color: red;">*</span></label><input type="text" name="authInstitute[]" class="form-control form-control-alternative" placeholder="organisation name" required/></div></div><div class="col-lg-4"><div class="form-group"><label class="form-control-label" for="authDesi">Designation<span style="color: red;">*</span></label><input type="text" name="authDesi[]" class="form-control form-control-alternative" required /></div></div><div class="col-lg-4"><div class="form-group"><label class="form-control-label" for="authEmail">Email address<span style="color: red;">*</span></label><input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="authEmail[]" class="form-control form-control-alternative" placeholder="jesse@example.com" required /></div></div><div class="col-lg-4"><div class="form-group"><label class="form-control-label" for="authMobile">Mobile<span style="color: red;">*</span></label><input type="tel" maxlength="10" name="authMobile[]" placeholder="10 digit mobile number" class="form-control form-control-alternative"  required/></div></div></div>';
+          $("#parentofauthdiv").append(input);
+        }
+        else{
+          var input = '<div style="width: 100%; background-color:#f4eab4" class="row mt-4 " name="authors"><div class="col-lg-6"><label class ="form-control-label">Author ' + (i + 1) + ' Communicating Author </label><div class="form-group"><label class="form-control-label" for="authName">Name of Author<span style="color: red;">*</span></label><input type="text" name="authName[]" placeholder="name" class="form-control form-control-alternative" required/></div></div><div class="col-lg-6 mt-4"><div class="mt-1 form-group"><label class="form-control-label" for="authInstitute">Institution / organization / Affiliation<span style="color: red;">*</span></label><input type="text" name="authInstitute[]" class="form-control form-control-alternative" placeholder="organisation name" required/></div></div><div class="col-lg-4"><div class="form-group"><label class="form-control-label" for="authDesi">Designation<span style="color: red;">*</span></label><input type="text" name="authDesi[]" class="form-control form-control-alternative" required /></div></div><div class="col-lg-4"><div class="form-group"><label class="form-control-label" for="authEmail">Email address<span style="color: red;">*</span></label><input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="authEmail[]" class="form-control form-control-alternative" placeholder="jesse@example.com" required /></div></div><div class="col-lg-4"><div class="form-group"><label class="form-control-label" for="authMobile">Mobile<span style="color: red;">*</span></label><input type="tel" maxlength="10" name="authMobile[]" placeholder="10 digit mobile number" class="form-control form-control-alternative"  required/></div></div></div>';
+          $("#parentofauthdiv").append(input);
+        }
+        
       }
     } else {
       alert("Invalid Input!!");
@@ -344,32 +352,6 @@ $countryResult = $countryStateCity->getAllCountry();
 
   function sendOtpToEmail(a) {
 
-
-    /* $.ajax({
-      url: "./CheckEmail.php",
-      type: "GET",
-      data: 'email=' + a,
-      crossDomain: true,
-      success: function(result) {
-        if(!result.status == true){
-          Swal.fire(
-          'sorry',
-          'Something went wrong Please Try again',
-          'error'
-        );
-        }
-        
-      },
-
-      error: function(result) {
-        Swal.fire(
-          'OH No!',
-          'Something went wrong Please Try again',
-          'error'
-        );
-      }
-
-    }); */
 
 
     $.ajax({
@@ -409,26 +391,6 @@ $countryResult = $countryStateCity->getAllCountry();
     });
 
   }
-
-  /* function validateEmail(email) {
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-  } */
-
-  /* function validate() {
-    var $result = $("#result");
-    var email = $("#email").val();
-    $result.text("");
-
-    if (validateEmail(email)) {
-      $result.text(email + " is valid :)");
-      $result.css("color", "green");
-    } else {
-      $result.text(email + " is not valid :(");
-      $result.css("color", "red");
-    }
-    return false;
-  } */
 
   // To give warning for page limit
   function giveWar() {
