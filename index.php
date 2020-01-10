@@ -470,6 +470,7 @@ $countryResult = $countryStateCity->getAllCountry();
   function uploadValidation(file) {
     var fileInput = document.getElementById(file);
     var filePath = fileInput.value;
+    console.log(fileInput.files[0].size);
     /* var allowedExtensions = /(\.pdf)$/i ||; */
     var allowedExtensions = /^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.doc|.docx|.DOC|.DOCX|.pdf|.PDF)$/;;
     if (!allowedExtensions.exec(filePath)) {
@@ -482,11 +483,22 @@ $countryResult = $countryStateCity->getAllCountry();
       fileInput.value = '';
       return false;
     } else {
-      Swal.fire(
-        'Success',
-        'File uploaded successfully.',
-        'success'
-      );
+      if (fileInput.files[0].size > 6144) {
+        Swal.fire(
+          'Warning',
+          'File size limit Exceeded!! Max(6 Mb)',
+          'warning'
+        );
+        fileInput.value = '';
+        return false;
+      } else {
+        Swal.fire(
+          'Success',
+          'File uploaded successfully.',
+          'success'
+        );
+      }
+
     }
   }
 </script>
