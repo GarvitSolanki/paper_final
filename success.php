@@ -1,5 +1,66 @@
-<?php 
+<?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require("Exception.php");
+require("PHPMailer.php");
+require("SMTP.php");
+
+session_start();
+$title = '';
+$subid = '';
+$email = '';
+if(isset($_SESSION['submission_id']) && $_SESSION['title'] && $_SESSION['email'])
+{
+  $title = $_SESSION['submission_id'];
+  $subid = $_SESSION['title'];
+  $email = $_SESSION['email'];
+}
+session_destroy();
+
+$headers = "From:<no-reply@i3lab.in>\r\n"; // Sender's Email
+						/* $headers .= "Cc:clubtermoo@gmail.com\r\n"; // Carbon copy to Sender */
+						$mail = new PHPMailer();
+						$mail->isSMTP();
+						$mail->Mailer = "smtp";
+						$mail->Host = "mail.i3lab.in";
+						$mail->Port = "587";
+						$mail->SMTPAuth = true;
+						$mail->SMTPSecure = 'tls';
+						$mail->Username = 'no-reply@i3lab.in';
+						$mail->Password = '1tc{W&@j._OT';
+						$mail->From = "no-reply@i3lab.in";
+						$mail->FromName = "RASTM2020";
+						$mail->AddAddress($email,'anonymous' );
+						
+						$mail->Subject = '[RASTM 2020] : Submission Acknowledgement';
+						$mail->Body =  "
+Hi,
+
+Thank you for submitting the manuscript, $title to RASTM 2020. 
+
+If you have any questions, please contact me. Thank you for considering this journal as a venue for your work.
+
+Paper Submission Id : $subid 
+
+Editor in Chief
+
+________________________________________________________________________
+Aaditya Maheshwari,
+Convenor - RASTM 2020,
+Project Lead - New Initiative - Research,
+Techno India NJR Udaipur
++91-8696932715";
+                        if($mail->send()) {
+                            /* header("Location: ./success.html"); */
+                            echo '{"status":"success","msg": "Success"}';
+                        }
+                        else
+                        {
+                            /* header("Location: ./index.php"); */
+							echo '{"status":"error","msg": "'.$mail->ErrorInfo.'"}' ;
+                            
+                        }
 ?>
 <!--
 

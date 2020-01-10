@@ -32,7 +32,7 @@ $headers = "From:<no-reply@i3lab.in>\r\n"; // Sender's Email
 						$mail->Password = '1tc{W&@j._OT';
 						$mail->From = "no-reply@i3lab.in";
 						$mail->FromName = "RASTM2020";
-						$mail->AddAddress($to,'anonymous' );
+						$mail->AddAddress('garvitsolanki5@gmail.com','anonymous' );
 						
 						$mail->Subject = '[RASTM 2020] : Submission Acknowledgement';
 						$mail->Body =  "
@@ -51,13 +51,15 @@ Project Lead - New Initiative - Research,
 Techno India NJR Udaipur
 +91-8696932715";
                         if($mail->send()) {
-                            header("Location: ./success.html");
-                            echo '{"status":"success","msg": "'.$rndno.'"}';
+                            /* header("Location: ./success.html"); */
+							/* echo '{"status":"success","msg": "'.$rndno.'"}'; */
+							print_r("success");
                         }
                         else
                         {
-                            header("Location: ./index.php");
-							echo '{"status":"error","msg": "'.$mail->ErrorInfo.'"}' ;
+							/* header("Location: ./index.php"); */
+							print_r($mail->ErrorInfo);
+							/* echo '{"status":"error","msg": "'.$mail->ErrorInfo.'"}' ; */
                             
                         }
 /* echo $rndno ; */
