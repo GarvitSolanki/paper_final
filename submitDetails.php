@@ -37,7 +37,8 @@ if (!$con) {
         $query1 = "INSERT into `researcher_info` (researcher_id, r_name, designation, qualification, organisation, email, mobile, alt_email, alt_mobile, r_address, country, r_state, city, postalCode) VALUES ('$r_id','$r_username','$r_designation','$r_qual','$r_org','$r_email','$r_mobile', '$r_alt_email', '$r_alt_mob', '$r_address', '$r_country', '$r_state', '$r_city', '$r_pincode')";
     }
     /* $query1 = "INSERT into `researcher_info` (researcher_id, r_name, designation, qualification, organisation, email, mobile, alt_email, alt_mobile, r_address, country, r_state, city, postalCode) VALUES ('$r_id','$r_username','$r_designation','$r_qual','$r_org','$r_email','$r_mobile', '$r_alt_email', '$r_alt_mob', '$r_address', '$r_country', '$r_state', '$r_city', '$r_pincode')"; */
-    $query2 = "INSERT into `submissions` (submission_id, researcher_id, title,abstract, no_of_pages, No_of_authors, submission_track, submission_assets, submitted_file_name) VALUES ('$subm_id', '$r_id', '$r_title', '$r_abstract', '$r_pages','$r_author_count','$r_track', '$target_file', '$submitted_file_name')";
+    $tarikh = date("d-m-yy");
+    $query2 = "INSERT into `submissions` (submission_id, researcher_id, title,abstract, no_of_pages, No_of_authors, submission_track, submission_assets, submitted_file_name,submission_time) VALUES ('$subm_id', '$r_id', '$r_title', '$r_abstract', '$r_pages','$r_author_count','$r_track', '$target_file', '$submitted_file_name','$tarikh')";
 
 
     $result1 = mysqli_query($con, $query1) or die(mysqli_error($con));
