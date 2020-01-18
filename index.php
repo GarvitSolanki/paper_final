@@ -432,7 +432,7 @@ $countryResult = $countryStateCity->getAllCountry();
   function uploadValidation(file) {
     var fileInput = document.getElementById(file);
     var filePath = fileInput.value;
-    console.log(fileInput.files[0].size);
+   // console.log(fileInput.files[0].size);
     /* var allowedExtensions = /(\.pdf)$/i ||; */
     var allowedExtensions = /^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.doc|.docx|.DOC|.DOCX|.pdf|.PDF)$/;;
     if (!allowedExtensions.exec(filePath)) {
