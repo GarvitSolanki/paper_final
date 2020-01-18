@@ -445,7 +445,7 @@ $countryResult = $countryStateCity->getAllCountry();
       fileInput.value = '';
       return false;
     } else {
-      if (fileInput.files[0].size > 6144) {
+      if (fileInput.files[0].size > 6291456‬) {
         Swal.fire(
           'Warning',
           'File size limit Exceeded!! Max(6 Mb)',
