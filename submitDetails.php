@@ -11,7 +11,6 @@ if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 } else {
     extract($_POST);
-
     $target_dir    = $_SERVER['DOCUMENT_ROOT'] . '/paper_submission/Uploads/';
     $target_file   = $target_dir . basename($_FILES["r_file"]["name"]);
     $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
