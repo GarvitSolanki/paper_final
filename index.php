@@ -464,6 +464,5 @@ $countryResult = $countryStateCity->getAllCountry();
     }
   }
 </script>
-</script>
 
 </html>
