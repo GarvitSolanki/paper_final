@@ -12,8 +12,8 @@ $subid = '';
 $email = '';
 if(isset($_SESSION['submission_id']) && $_SESSION['title'] && $_SESSION['email'])
 {
-  $title = $_SESSION['submission_id'];
-  $subid = $_SESSION['title'];
+  $title = $_SESSION['title'];
+  $subid = $_SESSION['submission_id'];
   $email = $_SESSION['email'];
 }
 session_destroy();

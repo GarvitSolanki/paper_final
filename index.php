@@ -94,7 +94,7 @@ $countryResult = $countryStateCity->getAllCountry();
                       <div class="form-group">
                         <label class="form-control-label" for="input-qual">Occupation<span style="color: red;">*</span></label>
                         <select id="input-qual" style="width: 100%;" name="r_qual" class="demoInputBox form-control form-control-alternative" required />
-                        <option>Professor</option>
+                        <option>Academics</option>
                         <option>Research Scholar</option>
                         <option>Student</option>
                         <option>Industry Professional</option>
@@ -432,7 +432,7 @@ $countryResult = $countryStateCity->getAllCountry();
   function uploadValidation(file) {
     var fileInput = document.getElementById(file);
     var filePath = fileInput.value;
-   // console.log(fileInput.files[0].size);
+    console.log(fileInput.files[0].size);
     /* var allowedExtensions = /(\.pdf)$/i ||; */
     var allowedExtensions = /^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.doc|.docx|.DOC|.DOCX|.pdf|.PDF)$/;;
     if (!allowedExtensions.exec(filePath)) {
@@ -444,9 +444,8 @@ $countryResult = $countryStateCity->getAllCountry();
       );
       fileInput.value = '';
       return false;
-    } 
-    
-    else if (fileInput.files[0].size > 6291456‬) {
+    } else {
+      if (fileInput.files[0].size > 6291456) {
         Swal.fire(
           'Warning',
           'File size limit Exceeded!! Max(6 Mb)',
@@ -454,8 +453,7 @@ $countryResult = $countryStateCity->getAllCountry();
         );
         fileInput.value = '';
         return false;
-      }
-    else {
+      } else {
         Swal.fire(
           'Success',
           'File uploaded successfully.',
@@ -463,8 +461,9 @@ $countryResult = $countryStateCity->getAllCountry();
         );
       }
 
-    
+    }
   }
+</script>
 </script>
 
 </html>
