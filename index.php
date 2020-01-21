@@ -444,8 +444,9 @@ $countryResult = $countryStateCity->getAllCountry();
       );
       fileInput.value = '';
       return false;
-    } else {
-      if (fileInput.files[0].size > 6291456‬) {
+    } 
+    
+    else if (fileInput.files[0].size > 6291456‬) {
         Swal.fire(
           'Warning',
           'File size limit Exceeded!! Max(6 Mb)',
@@ -453,7 +454,8 @@ $countryResult = $countryStateCity->getAllCountry();
         );
         fileInput.value = '';
         return false;
-      } else {
+      }
+    else {
         Swal.fire(
           'Success',
           'File uploaded successfully.',
@@ -461,7 +463,7 @@ $countryResult = $countryStateCity->getAllCountry();
         );
       }
 
-    }
+    
   }
 </script>
 
