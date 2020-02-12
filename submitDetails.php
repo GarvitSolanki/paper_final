@@ -17,9 +17,13 @@ if (!$con) {
     $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
     $submitted_file_name = basename($_FILES["r_file"]["name"]);
     move_uploaded_file($_FILES["r_file"]["tmp_name"], $target_file);
-    $query = "Select count(*) from submissions;"
+    $query = "Select count(*) from `submissions`";
     $count_sub = mysqli_query($con, $query) or die(mysqli_error($con));
-    $count_sub = $count_sub + 1;
+    $count_sub = mysqli_fetch_assoc($count_sub);
+    $count_sub = $count_sub["count(*)"];
+    print_r($count_sub);
+    print_r(gettype($count_sub));
+    $count_sub++;
     $r_id = 're' . substr(uniqid(), 0, 10);
     $subm_id = 'Paper_rastm' . $count_sub;
     if ($r_alt_email == '') {
