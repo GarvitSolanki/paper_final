@@ -52,7 +52,8 @@ $countryResult = $countryStateCity->getAllCountry();
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h3 class="mb-0 align-items-center">PAPER SUBMISSION</h3>
+                  <h2 class="mb-0 align-items-center">PAPER SUBMISSION</h2>
+	 	 <h4 class="align-items-center" style="color:red"> Note: Email Verification is compulsory for submission. </h4>
                 </div>
               </div>
             </div>
@@ -434,7 +435,7 @@ $countryResult = $countryStateCity->getAllCountry();
     var filePath = fileInput.value;
     console.log(fileInput.files[0].size);
     /* var allowedExtensions = /(\.pdf)$/i ||; */
-    var allowedExtensions = /^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.doc|.docx|.DOC|.DOCX|.pdf|.PDF)$/;;
+    var allowedExtensions = /^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.doc|.docx|.DOC|.DOCX)$/;;
     if (!allowedExtensions.exec(filePath)) {
       /* swal.fire('Please upload pdf or text file.'); */
       Swal.fire(

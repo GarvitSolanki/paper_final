@@ -12,15 +12,16 @@ if (!$con) {
 } else {
     extract($_POST);
 
-    $target_dir    = $_SERVER['DOCUMENT_ROOT'] . '/paper/Uploads/';
+    $target_dir    = $_SERVER['DOCUMENT_ROOT'] . '/paper_submission/Uploads/';
     $target_file   = $target_dir . basename($_FILES["r_file"]["name"]);
     $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
     $submitted_file_name = basename($_FILES["r_file"]["name"]);
     move_uploaded_file($_FILES["r_file"]["tmp_name"], $target_file);
-
-
-    $r_id = 'res' . substr(uniqid(), 0, 10);
-    $subm_id = 'sub' . substr(uniqid(), 0, 10);
+    $query = "Select count(*) from submissions;"
+    $count_sub = mysqli_query($con, $query) or die(mysqli_error($con));
+    $count_sub = $count_sub + 1;
+    $r_id = 're' . substr(uniqid(), 0, 10);
+    $subm_id = 'Paper_rastm' . $count_sub;
     if ($r_alt_email == '') {
         if ($r_alt_mob == '') {
             $query1 = "INSERT into `researcher_info` (researcher_id, r_name, designation, qualification, organisation, email, mobile, r_address, country, r_state, city, postalCode) VALUES ('$r_id','$r_username','$r_designation','$r_qual','$r_org','$r_email','$r_mobile', '$r_address', '$r_country', '$r_state', '$r_city', '$r_pincode')";
@@ -37,8 +38,8 @@ if (!$con) {
         $query1 = "INSERT into `researcher_info` (researcher_id, r_name, designation, qualification, organisation, email, mobile, alt_email, alt_mobile, r_address, country, r_state, city, postalCode) VALUES ('$r_id','$r_username','$r_designation','$r_qual','$r_org','$r_email','$r_mobile', '$r_alt_email', '$r_alt_mob', '$r_address', '$r_country', '$r_state', '$r_city', '$r_pincode')";
     }
     /* $query1 = "INSERT into `researcher_info` (researcher_id, r_name, designation, qualification, organisation, email, mobile, alt_email, alt_mobile, r_address, country, r_state, city, postalCode) VALUES ('$r_id','$r_username','$r_designation','$r_qual','$r_org','$r_email','$r_mobile', '$r_alt_email', '$r_alt_mob', '$r_address', '$r_country', '$r_state', '$r_city', '$r_pincode')"; */
-    $tarikh = date("d-m-yy");
-    $query2 = "INSERT into `submissions` (submission_id, researcher_id, title,abstract, no_of_pages, No_of_authors, submission_track, submission_assets, submitted_file_name,submission_time) VALUES ('$subm_id', '$r_id', '$r_title', '$r_abstract', '$r_pages','$r_author_count','$r_track', '$target_file', '$submitted_file_name','$tarikh')";
+//    $tarikh = date("d-m-yy");
+    $query2 = "INSERT into `submissions` (submission_id, researcher_id, title,abstract, no_of_pages, No_of_authors, submission_track, submission_assets, submitted_file_name) VALUES ('$subm_id', '$r_id', '$r_title', '$r_abstract', '$r_pages','$r_author_count','$r_track', '$target_file', '$submitted_file_name')";
 
 
     $result1 = mysqli_query($con, $query1) or die(mysqli_error($con));
