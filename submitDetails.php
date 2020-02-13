@@ -11,10 +11,6 @@ if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 } else {
     extract($_POST);
-<<<<<<< HEAD
-
-=======
->>>>>>> 3e42a9dd0aac61cb0c71e8d7166eba309746670f
     $target_dir    = $_SERVER['DOCUMENT_ROOT'] . '/paper_submission/Uploads/';
     $target_file   = $target_dir . basename($_FILES["r_file"]["name"]);
     $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
@@ -24,11 +20,9 @@ if (!$con) {
     $count_sub = mysqli_query($con, $query) or die(mysqli_error($con));
     $count_sub = mysqli_fetch_assoc($count_sub);
     $count_sub = $count_sub["count(*)"];
-    print_r($count_sub);
-    print_r(gettype($count_sub));
     $count_sub++;
-    $r_id = 're' . substr(uniqid(), 0, 10);
-    $subm_id = 'Paper_rastm' . $count_sub;
+    $r_id = "re" . substr(uniqid(), 0, 10);
+    $subm_id = "Paper_rastm" . str_pad($count_sub, 3, '0', STR_PAD_LEFT);
     if ($r_alt_email == '') {
         if ($r_alt_mob == '') {
             $query1 = "INSERT into `researcher_info` (researcher_id, r_name, designation, qualification, organisation, email, mobile, r_address, country, r_state, city, postalCode) VALUES ('$r_id','$r_username','$r_designation','$r_qual','$r_org','$r_email','$r_mobile', '$r_address', '$r_country', '$r_state', '$r_city', '$r_pincode')";
@@ -51,7 +45,7 @@ if (!$con) {
 
     $result1 = mysqli_query($con, $query1) or die(mysqli_error($con));
     if ($result1) {
-        $result2 = mysqli_query($con, $query2);
+        $result2 = mysqli_query($con, $query2) or die(mysqli_error($con));
         if ($result2) {
             if ($r_author_count) {
                 $flag = 0;

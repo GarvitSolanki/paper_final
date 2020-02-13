@@ -266,7 +266,7 @@ $countryResult = $countryStateCity->getAllCountry();
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="track">Paper Upload (.pdf or .doc format)<span style="color: red;">*</span></label>
+                        <label class="form-control-label" for="track">Paper Upload (.docx or .doc format)<span style="color: red;">*</span></label>
 
                         <div class="custom-file">
                           <input type="file" name="r_file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" onchange="uploadValidation('inputGroupFile01')" required>
@@ -440,7 +440,7 @@ $countryResult = $countryStateCity->getAllCountry();
       /* swal.fire('Please upload pdf or text file.'); */
       Swal.fire(
         'Warning',
-        'Please upload pdf or text file.',
+        'Please upload text file.',
         'warning'
       );
       fileInput.value = '';
